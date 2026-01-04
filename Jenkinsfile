@@ -20,7 +20,8 @@ pipeline {
         }
         stage ('SonarCloud Scan') {
             steps {
-                withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 
+                'SONAR_TOKEN')]) {
                     sh '''
                     docker run --rm \
                     -e SONAR_TOKEN=$SONAR_TOKEN \
@@ -28,7 +29,7 @@ pipeline {
                     sonarsource/sonar-scanner-cli \
                     -Dsonar.projecKey=Jefferson-org_node_project \
                     -Dsonar.organization=Jefferson-org \
-                    -Dsonar.sources=. 
+                    -Dsonar.sources=. \
                     -Dsonar.host.url=https://sonarcloud.io
                     '''
                 }
@@ -40,7 +41,7 @@ pipeline {
         success {
             echo 'Sonarcloud analysis successful'
             echo 'Build and Docker image push sucessful'
-            echo "Pushed Image: $REPOSITORY_URI: $IMAGE_TAG"
+            echo "Pushed Image: $REPOSITORY_URI:$IMAGE_TAG"
         failure {
             echo 'Build failed. Check logs above'
         }
