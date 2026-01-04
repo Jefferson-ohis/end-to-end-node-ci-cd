@@ -4,7 +4,6 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION = "us-east-1"
         REPOSITORY_URI = "426353511441.dkr.ecr.us-east-1.amazonaws.com/node-repo"
-        IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
     tools {
@@ -27,8 +26,8 @@ pipeline {
                     -e SONAR_TOKEN=$SONAR_TOKEN \
                     -v $(pwd):/usr/src \
                     sonarsource/sonar-scanner-cli \
-                    -Dsonar.projecKey=Jefferson-org_node_project \
-                    -Dsonar.organization=Jefferson-org \
+                    -Dsonar.projecKey=Mr-Jefferson-org_node_project \
+                    -Dsonar.organization=Mr-Jefferson-org \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=https://sonarcloud.io
                     '''
@@ -40,7 +39,7 @@ pipeline {
     post {
         success {
             echo 'Sonarcloud analysis successful'
-            
+
         failure {
             echo 'Build failed. Check logs above'
         }
