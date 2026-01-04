@@ -37,7 +37,7 @@ pipeline {
     }
 
     post {
-        sucess {
+        success {
             echo 'Sonarcloud analysis successful'
             echo 'Build and Docker image push sucessful'
             echo "Pushed Image: $REPOSITORY_URI: $IMAGE_TAG"
