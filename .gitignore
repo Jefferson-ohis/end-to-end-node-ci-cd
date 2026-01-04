@@ -1,0 +1,32 @@
+# =========================
+# Terraform
+# =========================
+infra/.terraform/
+infra/*.tfstate
+infra/.tfstate.
+infra/crash.log
+infra/override.tf
+infra/*_override.tf
+infra/secret.tfvars
+
+# =========================
+# Node.js App
+# =========================
+app/node_modules/
+app/logs
+app/*.log
+app/npm-debug.log*
+app/yarn-debug.log*
+app/dist/
+app/build/
+app/.env
+app/.env.local
+app/.env.*.local
+
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
