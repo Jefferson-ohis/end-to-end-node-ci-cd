@@ -52,7 +52,7 @@ pipeline {
             steps{
                 sh '''
                     docker build -t my-app:$IMAGE_TAG App/
-                    docker my-app:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
+                    docker tag my-app:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
                 '''
             }
         }
