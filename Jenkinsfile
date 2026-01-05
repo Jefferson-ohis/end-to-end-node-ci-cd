@@ -39,10 +39,9 @@ pipeline {
     post {
         success {
             echo 'Sonarcloud analysis successful'
-
+        }
         failure {
             echo 'Build failed. Check logs above'
-        }
         }
     }
 }
