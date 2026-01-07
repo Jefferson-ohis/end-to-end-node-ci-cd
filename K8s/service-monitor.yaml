@@ -7,7 +7,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: node-app
+      App: node-app
   namespaceSelector:
     any: true
   endpoints:
