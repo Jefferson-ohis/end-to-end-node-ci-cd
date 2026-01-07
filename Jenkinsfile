@@ -1,4 +1,3 @@
-# PIPELINE: DOCKER BUILD AND PUSH TO ECR#
 pipeline {
     agent any
 
