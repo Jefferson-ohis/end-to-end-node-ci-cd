@@ -20,21 +20,21 @@ spec:
         ports:
         - containerPort: 3000
         readinessProbe:
-      httpGet:
-        path: /health
-        port: 3000
-      initialDelaySeconds: 5
-      periodSeconds: 10
-      livenessProbe:
-      httpGet:
-        path: /health
-        port: 3000
-      initialDelaySeconds: 15
-      periodSeconds: 20
-      resources:
-        requests:
-        memory: "128Mi"
-        cpu: "100m"
-        limits:
-        memory: "512Mi"
-        cpu: "500M"
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
