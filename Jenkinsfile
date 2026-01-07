@@ -28,8 +28,8 @@ pipeline {
                     -e SONAR_TOKEN=$SONAR_TOKEN \
                     -v $(pwd):/usr/src \
                     sonarsource/sonar-scanner-cli \
-                    -Dsonar.projectKey=mr-jefferson-org_node_project \
-                    -Dsonar.organization=mr-jefferson-org \
+                    -Dsonar.projectKey=mr-jefferson-orgs_node_project \
+                    -Dsonar.organization=mr-jefferson-orgs \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=https://sonarcloud.io
                     '''
