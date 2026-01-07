@@ -23,13 +23,13 @@ pipeline {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 
                 'SONAR_TOKEN')]) {
                     sh '''
-                    docker run --rm
-                    -e SONAR_TOKEN=$SONAR_TOKEN
-                    -v $(pwd):/usr/src
-                    sonarsource/sonar-scanner-cli
-                    -Dsonar.projectKey=mr-jefferson-orgs_node_project
-                    -Dsonar.organization=mr-jefferson-orgs
-                    -Dsonar.sources=.
+                    docker run --rm \
+                    -e SONAR_TOKEN=$SONAR_TOKEN \
+                    -v $(pwd):/usr/src \
+                    sonarsource/sonar-scanner-cli \
+                    -Dsonar.projectKey=mr-jefferson-orgs_node_project \
+                    -Dsonar.organization=mr-jefferson-orgs \
+                    -Dsonar.sources=. \
                     -Dsonar.host.url=https://sonarcloud.io
                     '''
                 }
