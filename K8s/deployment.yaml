@@ -15,7 +15,7 @@ spec:
         app: node-app
     spec:
       containers:
-      - name: app
+      - name: App
         image: ECR_URI:latest
         ports:
         - containerPort: 3000
