@@ -23,13 +23,13 @@ pipeline {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 
                 'SONAR_TOKEN')]) {
                     sh '''
-                    docker run --rm \
-                    -e SONAR_TOKEN=$SONAR_TOKEN \
-                    -v $(pwd):/usr/src \
-                    sonarsource/sonar-scanner-cli \
-                    -Dsonar.projectKey=mr-jefferson-orgs_node_project \
-                    -Dsonar.organization=mr-jefferson-orgs \
-                    -Dsonar.sources=. \
+                    docker run --rm
+                    -e SONAR_TOKEN=$SONAR_TOKEN
+                    -v $(pwd):/usr/src
+                    sonarsource/sonar-scanner-cli
+                    -Dsonar.projectKey=mr-jefferson-orgs_node_project
+                    -Dsonar.organization=mr-jefferson-orgs
+                    -Dsonar.sources=.
                     -Dsonar.host.url=https://sonarcloud.io
                     '''
                 }
@@ -41,7 +41,7 @@ pipeline {
                 withCredentials([aws(credentialsId: 'AWS-ECR-CRED', accessKeyVariable: 
                 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
-                        aws ecr get-login-password --region $AWS_DEFAULT_REGION \
+                        aws ecr get-login-password --region $AWS_DEFAULT_REGION
                         | docker login --username AWS --password-stdin $REPOSITORY_URI
                     '''
                 }
@@ -77,11 +77,9 @@ pipeline {
                         export AWS_DEFAULT_REGION=us-east-1
 
                         echo "installing prometheus monitor...."
-                        helm repo add prometheus-community \
-                        https://prometheus-community.github.io/helm-charts || true
+                        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts || true
                         helm repo update
-                        helm upgrade --install prometheus \ 
-                        prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
+                        helm upgrade --install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 
                         echo "Updating image tag in deployment.yaml.."
                         sed -i "s|ECR_URI:latest|${REPOSITORY_URI}:${IMAGE_TAG}|g" K8s/deployment.yaml
