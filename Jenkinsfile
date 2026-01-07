@@ -41,7 +41,7 @@ pipeline {
                 withCredentials([aws(credentialsId: 'AWS-ECR-CRED', accessKeyVariable: 
                 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
-                        aws ecr get-login-password --region $AWS_DEFAULT_REGION
+                        aws ecr get-login-password --region $AWS_DEFAULT_REGION \
                         | docker login --username AWS --password-stdin $REPOSITORY_URI
                     '''
                 }
